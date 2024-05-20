@@ -1,0 +1,18 @@
+services:
+  postgres:
+    container_name: kursachdb
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_DB: ${POSTGRES_DB:-xerarch}
+      PGDATA: /data/postgres
+    volumes:
+      - "postgres:/data/postgres"
+      - "./database:/docker-entrypoint-initdb.d"
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres:
