@@ -26,4 +26,20 @@ function get_user_info($cookie) {
 	$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
 	return $arr;
 }
+
+function fetch_users($startswith) {
+	global $dbconn, $FETCH_USERS;
+	$result = pg_query_params($dbconn, $FETCH_USERS, array($startswith . "%"))
+		or die(pg_last_error());
+	$arr = pg_fetch_all($result, PGSQL_ASSOC);
+	return $arr;
+}
+ 
+function delete_users($users) {
+	global $dbconn, $DELETE_USERS;
+	$pgarray_to_delete = '{'. implode(', ', $users) . '}';
+	$result = pg_query_params($dbconn, $DELETE_USERS, array($pgarray_to_delete))
+		or die(pg_last_error());
+	return $result;
+}
 ?>

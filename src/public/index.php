@@ -1,7 +1,8 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../database/database.php';
+include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
 
-$auth_cookie = $_COOKIE["Auth"];
+$auth_cookie = $_COOKIE[$AUTH_COOKIE];
 if (isset($auth_cookie)) {
   $user_info = get_user_info($auth_cookie);
   $role_id = $user_info["role_id"];
@@ -20,8 +21,6 @@ if (isset($auth_cookie)) {
 	}
   }
 }
-
-
 
 header("Location: login.php");
 exit();
