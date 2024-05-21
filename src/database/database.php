@@ -54,4 +54,20 @@ function regiser_user($user) {
 		or die(pg_last_error());
 	return $result;
 }
+
+function fetch_courses($client_id) {
+	global $dbconn, $FETCH_COURSES;
+	$result = pg_query_params($dbconn, $FETCH_COURSES, array($client_id))
+		or die(pg_last_error());
+	$arr = pg_fetch_all($result, PGSQL_ASSOC);
+	return $arr;
+}
+
+function fetch_courses_professor($client_id) {
+	global $dbconn, $FETCH_COURSES_PROFESSOR;
+	$result = pg_query_params($dbconn, $FETCH_COURSES_PROFESSOR, array($client_id))
+		or die(pg_last_error());
+	$arr = pg_fetch_all($result, PGSQL_ASSOC);
+	return $arr;
+}
 ?>

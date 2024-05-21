@@ -12,7 +12,7 @@ $INSERT_COOKIE="" .
 "returning id as cookie ";
 
 $GET_USER_INFO="" .
-"select full_name, login, role_id from cookie c " . 
+"select cl.id, full_name, login, role_id from cookie c " . 
 "inner join client cl " . 
 "on cl.id = c.user_id " . 
 "where not c.disabled " . 
@@ -34,5 +34,15 @@ $CREATE_USER="" .
 "insert into client ".
 "(full_name, login, password, salt, role_id) ".
 "values ".
-"($1, $2, $3, $4, $5) ";
+	"($1, $2, $3, $4, $5) ";
+
+$FETCH_COURSES="" .
+"select name, description from courses c " .
+"inner join course_client cc on " .
+"cc.course_id  = c.id " .
+	"where cc.client_id = $1 ";
+
+$FETCH_COURSES_PROFESSOR="" .
+"select name, description from courses c " .
+"where c.created_by = $1 ";
 ?>
