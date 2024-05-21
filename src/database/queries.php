@@ -28,5 +28,11 @@ $FETCH_USERS="" .
 $DELETE_USERS="" .
 "update client ".
 "set deleted = true ".
-"where login = ANY ($1) ";
+	"where login = ANY ($1) ";
+
+$CREATE_USER="" .
+"insert into client ".
+"(full_name, login, password, salt, role_id) ".
+"values ".
+"($1, $2, $3, $4, $5) ";
 ?>

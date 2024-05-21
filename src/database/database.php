@@ -42,4 +42,16 @@ function delete_users($users) {
 		or die(pg_last_error());
 	return $result;
 }
+
+function regiser_user($user) {
+	global $dbconn, $CREATE_USER;
+	$full_name = $user["full_name"];
+	$login = $user["login"];
+	$password = $user["password"];
+	$salt = $user["salt"];
+	$role_id = $user["role_id"];
+	$result = pg_query_params($dbconn, $CREATE_USER, array($full_name, $login, $password, $salt, $role_id))
+		or die(pg_last_error());
+	return $result;
+}
 ?>
