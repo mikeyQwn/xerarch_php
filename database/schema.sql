@@ -66,21 +66,41 @@ create table lesson(
 	PRIMARY KEY(id)
 );
 
-create table lesson_question(
+create table test(
 	id serial not null,
-	lesson_id int not null references lesson(id),
-	question varchar not null,
-	answer varchar not null,
+    course_id int not null references course(id),
+	name varchar not null,
+	created_at timestamp not null default now(),
+	deleted bool not null default false,
 	PRIMARY KEY(id)
 );
 
-create table lesson_answer(
+create table test_question(
 	id serial not null,
-	lesson_question_id int not null references lesson_question(id),
-	client_id int not null references client(id),
+	test_id int not null references test(id),
+	question varchar not null,
 	answer varchar not null,
+	weight int not null,
 	PRIMARY KEY(id)
 );
+
+create table attempt(
+	id serial not null,
+	test_id int not null references test(id),
+	client_id int not null references client(id),
+	created_at timestamp not null default now(),
+	PRIMARY KEY(id)
+);
+
+create table test_answer(
+	id serial not null,
+	attempt_id int not null references attempt(id),
+	question_id int not null references test_question(id),
+	answer varchar not null,
+	is_correct bool not null,
+	PRIMARY KEY(id)
+);
+
 
 insert into course
 (name, description, created_by)
@@ -98,22 +118,6 @@ values
 ('Physics lesson 2', 2, 'Physics lesson 2 text'),
 ('Chemistry lesson 1', 3, 'Chemistry lesson 1 text'),
 ('Chemistry lesson 2', 3, 'Chemistry lesson 2 text');
-
-insert into lesson_question
-(lesson_id, question, answer)
-values
-(1, 'Math question 1', 'Math answer 1'),
-(1, 'Math question 2', 'Math answer 2'),
-(2, 'Math question 3', 'Math answer 3'),
-(2, 'Math question 4', 'Math answer 4'),
-(3, 'Physics question 1', 'Physics answer 1'),
-(3, 'Physics question 2', 'Physics answer 2'),
-(4, 'Physics question 3', 'Physics answer 3'),
-(4, 'Physics question 4', 'Physics answer 4'),
-(5, 'Chemistry question 1', 'Chemistry answer 1'),
-(5, 'Chemistry question 2', 'Chemistry answer 2'),
-(6, 'Chemistry question 3', 'Chemistry answer 3'),
-(6, 'Chemistry question 4', 'Chemistry answer 4');
 
 insert into course_client
 (course_id, client_id)
