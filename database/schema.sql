@@ -75,31 +75,28 @@ create table test(
 	PRIMARY KEY(id)
 );
 
+create table question_type(
+	id serial not null,
+	name varchar not null,
+	PRIMARY KEY(id)
+);
+
 create table test_question(
 	id serial not null,
 	test_id int not null references test(id),
 	question varchar not null,
+	question_type_id int not null references question_type(id),
+	choices varchar[],
 	answer varchar not null,
-	weight int not null,
 	PRIMARY KEY(id)
 );
 
-create table attempt(
-	id serial not null,
-	test_id int not null references test(id),
-	client_id int not null references client(id),
-	created_at timestamp not null default now(),
-	PRIMARY KEY(id)
-);
 
-create table test_answer(
-	id serial not null,
-	attempt_id int not null references attempt(id),
-	question_id int not null references test_question(id),
-	answer varchar not null,
-	is_correct bool not null,
-	PRIMARY KEY(id)
-);
+insert into question_type
+(id, name)
+values
+(1, 'answer'),
+(2, 'choice');
 
 
 insert into course

@@ -95,4 +95,35 @@ function add_lesson($lesson) {
 		or die(pg_last_error());
 	return $result;
 }
+
+function create_test($test) {
+	global $dbconn, $CREATE_TEST;
+	$course_id = $test["course_id"];
+	$name = $test["name"];
+	$result = pg_query_params($dbconn, $CREATE_TEST, array($course_id, $name))
+		or die(pg_last_error());
+	$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
+	return $arr["id"];
+}
+
+function create_test_question($test_id, $question) {
+	global $dbconn, $CREATE_TEST_QUESTION;
+	$question_text = $question["question"];
+	$question_type_id = $question["question_type_id"];
+	$choices = $question["choices"];
+	$answer = $question["answer"];
+	$result = pg_query_params($dbconn, $CREATE_TEST_QUESTION, array($test_id, $question_text, $question_type_id, $choices, $answer))
+		or die(pg_last_error());
+	return $result;
+}
+
+function add_test($test) {
+	$questions = $test["questions"];
+	$test_id = create_test($test);
+	foreach ($questions as $question) {
+		print_r($question);
+		create_test_question($test_id, $question);
+	}
+	return false;
+}
 ?>

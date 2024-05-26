@@ -73,5 +73,19 @@ $ADD_LESSON = "" .
 	"insert into lesson ".
 	"(course_id, name, full_text) ".
 	"values ".
-		"($1, $2, $3) ";
+	"($1, $2, $3) ";
+
+$CREATE_TEST = "" .
+	"insert into test ".
+	"(course_id, name) ".
+	"values ".
+	"($1, $2) ".
+	"returning id ";
+
+$CREATE_TEST_QUESTION = "" .
+	"insert into test_question ".
+	"(test_id, question, question_type_id, choices, answer) ".
+	"values ".
+	"($1, $2, $3, $4, $5) ".
+	"returning id ";
 ?>

@@ -1,7 +1,11 @@
 <?php 
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../utils/render_template.php';
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
+
+global $SHOW_TEMPLATE;
+echo render_template($SHOW_TEMPLATE, []);
 ?>
+
 
 <div class="flex column gap">
 <h1>Меню курса</h1>
@@ -27,10 +31,13 @@ echo "</ul>";
       'action' => '/api/add_lesson.php',
       'target' => 'lesson',
       'course_id' => $course_id,
+      'accept' => 'text/plain'
     ]);
-    echo "<iframe name='lesson'></iframe>";
+  echo "<iframe id='add_lesson' name='lesson' onload='show(\"add_lesson\")'></iframe>";
   }
-?>
+
+  ?>
+
 <?php if (isset($tests) and count($tests) != 0) { ?>
 <hr/>
 <h3>Тесты</h3>
@@ -41,6 +48,18 @@ echo "</ul>";
       'text' => $test['name'],
     ]);
     echo "<br>";
+  }
+  if ($can_add) {
+    global $FILE_UPLOAD_TEMPLATE;
+    echo "<br/><strong>Загрузить тест</strong>";
+    echo render_template($FILE_UPLOAD_TEMPLATE, [
+      'label' => 'Название теста',
+      'action' => '/api/add_test.php',
+      'target' => 'test',
+      'course_id' => $course_id,
+      'accept' => 'application/json',
+  ]);
+  echo "<iframe id='add_test' name='test' onload='show(\"add_test\")'></iframe>";
   }
   ?>
   <?php } ?>

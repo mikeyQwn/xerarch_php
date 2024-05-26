@@ -6,7 +6,7 @@
   <br/>
   <input type="text" name="name" id="name" required />
   <br/>
-  <input type="file" accept="text/plain" id="upload" name="upload" />
+  <input type="file" accept="<?php echo $accept ?>" id="upload" name="upload" />
   <br/>
   <button>Загрузить файл</button>
 </form>
