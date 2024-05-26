@@ -49,5 +49,14 @@ $FETCH_LESSONS = "" .
 "inner join course_client cc " .
 "on cc.course_id = c.id " .
 "where c.id = $1 " .
-"and cc.client_id = $2 ";
+	"and cc.client_id = $2 ";
+
+$FETCH_TESTS = "" .
+	"select t.id, t.name from test t " .
+	"inner join course c " .
+	"on c.id = t.course_id " .
+	"inner join course_client cc " .
+	"on cc.course_id = c.id " .
+	"where c.id = $1 " .
+		"and cc.client_id = $2 ";
 ?>

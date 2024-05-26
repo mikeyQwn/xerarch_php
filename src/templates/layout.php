@@ -11,9 +11,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
   <header>
     <nav>
       <?php
-        global $NAV_BUTTON_TEMPLATE;
+        global $ANCHOR_TEMPLATE;
       foreach ($navigation as &$nav_button) {
-          echo render_template($NAV_BUTTON_TEMPLATE, $nav_button); 
+          echo render_template($ANCHOR_TEMPLATE, $nav_button); 
       };
       ?>
     </nav>

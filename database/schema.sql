@@ -68,7 +68,7 @@ create table lesson(
 
 create table test(
 	id serial not null,
-    course_id int not null references course(id),
+	course_id int not null references course(id),
 	name varchar not null,
 	created_at timestamp not null default now(),
 	deleted bool not null default false,
@@ -129,3 +129,12 @@ values
 (2, 1),
 (3, 1);
 
+insert into test
+(course_id, name)
+values
+(1, 'Math test 1'),
+(1, 'Math test 2'),
+(2, 'Physics test 1'),
+(2, 'Physics test 2'),
+(3, 'Chemistry test 1'),
+(3, 'Chemistry test 2');
