@@ -2,17 +2,39 @@
   background: #f0f0f0;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-body {
+main {
   font-family: Arial, sans-serif;
   margin: auto;
   padding: 0;
   max-width: 60vw;
 }
 
+nav {
+  width: 100vw;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  display: flex;
+  align-items: center;
+  background: #aaa;
+}
+
+nav a:last-child {
+  margin-left: auto;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  background: #aaa;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
-  body {
+  main {
     max-width: 85vw;
   }
 }

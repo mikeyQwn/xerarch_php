@@ -9,18 +9,20 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
     <title><?php echo $title ?></title>
     <link href="css/style.css" rel="stylesheet">
   </head>
-  <header>
-    <nav>
-      <?php
-        global $ANCHOR_TEMPLATE;
-      foreach ($navigation as &$nav_button) {
-          echo render_template($ANCHOR_TEMPLATE, $nav_button); 
-      };
-      ?>
-    </nav>
-  </header>
   <body>
+    <header>
+      <nav>
+        <?php
+          global $ANCHOR_TEMPLATE;
+        foreach ($navigation as &$nav_button) {
+            echo render_template($ANCHOR_TEMPLATE, $nav_button); 
+        };
+        ?>
+      </nav>
+    </header>
+    <main>
     <?php echo $contents ?>
+    </main>
   </body>
 </html>
 
