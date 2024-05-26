@@ -1,27 +1,23 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../database/database.php';
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
+include_once $_SERVER["DOCUMENT_ROOT"] .'/../utils/render_template.php';
+include_once $_SERVER["DOCUMENT_ROOT"] .'/../utils/item_by_role.php';
+include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
 
 $auth_cookie = $_COOKIE[$AUTH_COOKIE];
-if (isset($auth_cookie)) {
-  $user_info = get_user_info($auth_cookie);
-  $role_id = $user_info["role_id"];
-  if (isset($role_id)) {
-	if ($role_id == 1) {
-		header("Location: ../professor/index.php");
-		exit();
-	}
-	if ($role_id == 2) {
-		header("Location: ../student/index.php");
-		exit();
-	}
-	if ($role_id == 3) {
-		header("Location: ../moderator/index.php");
-		exit();
-	}
-  }
+if (!isset($auth_cookie)) {
+	header("Location: login.php");
+	exit();
 }
 
-header("Location: login.php");
-exit();
+$user_info = get_user_info($auth_cookie);
+$contents = render_template($GREETING_TEMPLATE, $user_info);
+
+echo render_template($LAYOUT_TEMPLATE, [
+  'title' => 'Логин',
+  'navigation' => get_navbar($user_info['role_id']),
+  'contents' => $contents,
+  ]
+);
 ?>

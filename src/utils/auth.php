@@ -4,9 +4,15 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
 
 function auth_middleware($role_ids) {
 	$user_info = auth($role_ids);
+
 	if (!$user_info["ok"]) {
-		header("HTTP/1.1 401 Unauthorized");
-		echo "<h1>401 Unauthorized</h1>";
+		global $LAYOUT_TEMPLATE, $UNAUTH_TEMPLATE, $GENERAL_NAVIGATION;
+		$contents = render_template($UNAUTH_TEMPLATE, []);
+		echo render_template($LAYOUT_TEMPLATE, [
+			'title' => "Вы не авторизованы",
+			'navigation' => $GENERAL_NAVIGATION,
+			'contents' => $contents,
+		]);
 		exit();
 	}
 	return $user_info;

@@ -5,7 +5,7 @@
 </h3>
 <p>
   <?php
-    echo $content;
+    echo nl2br($content);
   ?>
 </p>
 

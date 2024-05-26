@@ -86,4 +86,14 @@ function fetch_lesson($lesson_id, $client_id) {
 	$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
 	return $arr;
 }
+
+function add_lesson($lesson) {
+	global $dbconn, $ADD_LESSON;
+	$course_id = $lesson["course_id"];
+	$name = $lesson["name"];
+	$full_text = $lesson["full_text"];
+	$result = pg_query_params($dbconn, $ADD_LESSON, array($course_id, $name, $full_text))
+		or die(pg_last_error());
+	return $result;
+}
 ?>

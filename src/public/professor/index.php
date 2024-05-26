@@ -14,7 +14,7 @@ $user_info = auth_middleware(array(1));
   <header>
     <nav>
       <a href="/">Домой</a>
-      <a href="/professor/courses.php">Ваши курсы</a>
+      <a href="/courses.php">Ваши курсы</a>
       <a href="/api/logout.php">Выйти</a>
     </nav>
   </header>

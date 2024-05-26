@@ -7,6 +7,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
 <html>
   <head>
     <title><?php echo $title ?></title>
+    <link href="css/style.css" rel="stylesheet">
   </head>
   <header>
     <nav>

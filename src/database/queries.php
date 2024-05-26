@@ -68,4 +68,10 @@ $FETCH_LESSON = "" .
 "on cc.course_id = c.id " .
 "where l.id = $1 " .
 	"and cc.client_id = $2 ";
+
+$ADD_LESSON = "" .
+	"insert into lesson ".
+	"(course_id, name, full_text) ".
+	"values ".
+		"($1, $2, $3) ";
 ?>
