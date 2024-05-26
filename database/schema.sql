@@ -38,9 +38,9 @@ create table cookie (
 	PRIMARY KEY(id)
 );
 
-create table courses(
+create table course(
 	id serial not null,
-	name varchar unique not null,
+	name varchar not null,
 	description varchar not null,
 	created_at timestamp not null default now(),
 	created_by int not null references client(id),
@@ -50,7 +50,7 @@ create table courses(
 
 create table course_client(
 	id serial not null,
-	course_id int not null references courses(id),
+	course_id int not null references course(id),
 	client_id int not null references client(id),
 	PRIMARY KEY(id)
 );
@@ -59,16 +59,10 @@ create table course_client(
 create table lesson(
 	id serial not null,
 	name varchar not null,
+	course_id int not null references course(id),
 	full_text varchar not null,
 	created_at timestamp not null default now(),
 	deleted bool not null default false,
-	PRIMARY KEY(id)
-);
-
-create table course_lesson(
-	id serial not null,
-	course_id int not null references courses(id),
-	lesson_id int not null references lesson(id),
 	PRIMARY KEY(id)
 );
 
@@ -88,7 +82,7 @@ create table lesson_answer(
 	PRIMARY KEY(id)
 );
 
-insert into courses
+insert into course
 (name, description, created_by)
 values
 ('Math', 'Math course', 2),
@@ -96,14 +90,14 @@ values
 ('Chemistry', 'Chemistry course', 2);
 
 insert into lesson
-(name, full_text)
+(name, course_id, full_text)
 values
-('Math lesson 1', 'Math lesson 1 text'),
-('Math lesson 2', 'Math lesson 2 text'),
-('Physics lesson 1', 'Physics lesson 1 text'),
-('Physics lesson 2', 'Physics lesson 2 text'),
-('Chemistry lesson 1', 'Chemistry lesson 1 text'),
-('Chemistry lesson 2', 'Chemistry lesson 2 text');
+('Math lesson 1', 1, 'Math lesson 1 text'),
+('Math lesson 2', 1, 'Math lesson 2 text'),
+('Physics lesson 1', 2, 'Physics lesson 1 text'),
+('Physics lesson 2', 2, 'Physics lesson 2 text'),
+('Chemistry lesson 1', 3, 'Chemistry lesson 1 text'),
+('Chemistry lesson 2', 3, 'Chemistry lesson 2 text');
 
 insert into lesson_question
 (lesson_id, question, answer)
@@ -124,17 +118,10 @@ values
 insert into course_client
 (course_id, client_id)
 values
-(1, 3),
-(2, 3),
-(3, 3);
-
-insert into course_lesson
-(course_id, lesson_id)
-values
-(1, 1),
 (1, 2),
-(2, 3),
-(2, 4),
-(3, 5),
-(3, 6);
+(2, 2),
+(3, 2),
+(1, 1),
+(2, 1),
+(3, 1);
 

@@ -63,9 +63,9 @@ function fetch_courses($client_id) {
 	return $arr;
 }
 
-function fetch_courses_professor($client_id) {
-	global $dbconn, $FETCH_COURSES_PROFESSOR;
-	$result = pg_query_params($dbconn, $FETCH_COURSES_PROFESSOR, array($client_id))
+function fetch_lessons($course_id, $client_id) {
+	global $dbconn, $FETCH_LESSONS;
+	$result = pg_query_params($dbconn, $FETCH_LESSONS, array($course_id, $client_id))
 		or die(pg_last_error());
 	$arr = pg_fetch_all($result, PGSQL_ASSOC);
 	return $arr;

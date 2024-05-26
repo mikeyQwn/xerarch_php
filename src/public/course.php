@@ -19,7 +19,8 @@ $user_info = auth_middleware(array(1));
     </nav>
   </header>
   <body>
-    <h1>Вы - профессор</h1>
+    <h1>Меню курса</h1>
+    <?php print_r(fetch_lessons($_GET["id"], $user_info["id"])) ?>
   </body>
 </html>
 

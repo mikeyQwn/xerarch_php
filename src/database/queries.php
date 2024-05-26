@@ -37,12 +37,17 @@ $CREATE_USER="" .
 	"($1, $2, $3, $4, $5) ";
 
 $FETCH_COURSES="" .
-"select name, description from courses c " .
+"select c.id, name, description from course c " .
 "inner join course_client cc on " .
 "cc.course_id  = c.id " .
-	"where cc.client_id = $1 ";
+"where cc.client_id = $1 ";
 
-$FETCH_COURSES_PROFESSOR="" .
-"select name, description from courses c " .
-"where c.created_by = $1 ";
+$FETCH_LESSONS = "" .
+"select l.id, l.name from lesson l " .
+"inner join course c " .
+"on c.id = l.course_id " .
+"inner join course_client cc " .
+"on cc.course_id = c.id " .
+"where c.id = $1 " .
+"and cc.client_id = $2 ";
 ?>
