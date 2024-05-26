@@ -50,8 +50,7 @@ function regiser_user($user) {
 	$password = $user["password"];
 	$salt = $user["salt"];
 	$role_id = $user["role_id"];
-	$result = pg_query_params($dbconn, $CREATE_USER, array($full_name, $login, $password, $salt, $role_id))
-		or die(pg_last_error());
+	$result = pg_query_params($dbconn, $CREATE_USER, array($full_name, $login, $password, $salt, $role_id));
 	return $result;
 }
 

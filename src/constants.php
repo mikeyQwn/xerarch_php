@@ -21,6 +21,8 @@ $STUDENT_NAVIGATION = [
 
 $MODERATOR_NAVIGATION = [
 	["href" => "/", "text" => "Домой"],
+    ["href" => "/moderator/delete_user.php", "text" => "Удалить пользователей"],
+    ["href" => "/moderator/register_user.php", "text" => "Зарегистрировать пользователя"],
 	["href" => "/api/logout.php", "text" => "Выйти"],
 ];
 
@@ -36,4 +38,6 @@ $NOTFOUND_TEMPLATE = $TEMPLATE_DIR . "notfound.php";
 $COURSES_TEMPLATE = $TEMPLATE_DIR . "courses.php";
 $GREETING_TEMPLATE = $TEMPLATE_DIR . "greeting.php";
 $FILE_UPLOAD_TEMPLATE = $TEMPLATE_DIR . "upload_file.php";
+$CREATE_USER_TEMPLATE = $TEMPLATE_DIR . "create_user.php";
+$DELETE_USERS_TEMPLATE = $TEMPLATE_DIR . "delete_users.php";
 ?>

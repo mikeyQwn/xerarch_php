@@ -1,3 +1,4 @@
+<div class="center column">
 <h1>
   <?php
     $hour = date('G');
@@ -20,3 +21,4 @@
 echo "Вы вошли как " . get_role_name($role_id);
 ?>
 </h3>
+</div>

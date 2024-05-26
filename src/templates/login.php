@@ -1,3 +1,4 @@
+<div class="center column">
 <h1>Логин</h1>
 <form id="loginForm" action="api/login.php" method="POST">
   <label for="login">Логин:</label><br />
@@ -10,4 +11,5 @@
     required
   /><br /><br />
   <button type="submit">Login</button>
-</form>
+  </form>
+</div>

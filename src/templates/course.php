@@ -3,18 +3,22 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../utils/render_template.php';
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
 ?>
 
+<div class="flex column gap">
 <h1>Меню курса</h1>
 <hr/>
 <h3>Лекции</h3>
 <?php 
-  global $ANCHOR_TEMPLATE;
-  foreach ($lessons as $lesson) { 
+global $ANCHOR_TEMPLATE;
+echo "<ul>";
+foreach ($lessons as $lesson) { 
+    echo "<li>";
     echo render_template($ANCHOR_TEMPLATE, [
       'href' => "/lesson.php?id=" . $lesson['id'],
       'text' => $lesson['name'],
     ]);
-    echo "<br>";
-  }
+    echo "</li>";
+}
+echo "</ul>";
   if ($can_add) {
     global $FILE_UPLOAD_TEMPLATE;
     echo "<br/><strong>Загрузить лекцию</strong>";
@@ -39,4 +43,5 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
     echo "<br>";
   }
   ?>
-<?php } ?>
+  <?php } ?>
+</div>
