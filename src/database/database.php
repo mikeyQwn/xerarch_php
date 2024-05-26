@@ -78,4 +78,12 @@ function fetch_tests($course_id, $client_id) {
 	$arr = pg_fetch_all($result, PGSQL_ASSOC);
 	return $arr;
 }
+
+function fetch_lesson($lesson_id, $client_id) {
+	global $dbconn, $FETCH_LESSON;
+	$result = pg_query_params($dbconn, $FETCH_LESSON, array($lesson_id, $client_id))
+		or die(pg_last_error());
+	$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
+	return $arr;
+}
 ?>

@@ -30,4 +30,5 @@ $LAYOUT_TEMPLATE = $TEMPLATE_DIR . "layout.php";
 $ANCHOR_TEMPLATE = $TEMPLATE_DIR . "anchor.php";
 $LOGIN_TEMPLATE = $TEMPLATE_DIR . "login.php";
 $COURSE_TEMPLATE = $TEMPLATE_DIR . "course.php";
+$LESSON_TEMPLATE = $TEMPLATE_DIR . "lesson.php";
 ?>
