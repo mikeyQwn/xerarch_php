@@ -14,7 +14,7 @@ main {
 
 nav {
   width: 100vw;
-  height: 4rem;
+  height: 5rem;
   padding-left: 20vw;
   padding-right: 20vw;
   display: flex;
@@ -40,7 +40,7 @@ nav a {
   border-radius: 1rem;
   padding: 0.5rem;
   text-decoration: none;
-  background: #aaa;
+  background: #FFF;
   font-size: 1.2em;
   font-weight: bold;
 }

@@ -97,5 +97,17 @@ $ADD_ACCESS = "" .
 "insert into course_client " .
 "(course_id, client_id) " .
 "values " . 
-"($1, (select id from client where login = $2))";
+	"($1, (select id from client where login = $2))";
+
+$USER_HAS_ACCESS = "" .
+"select exists ( " .
+"select * from course_client cc " .
+"where course_id = $1 " .
+"and client_id = $2) ";
+
+$USER_HAS_ACCESS_BY_LOGIN = "" .
+"select exists ( " .
+"select * from course_client cc " .
+"where course_id = $1 " .
+"and client_id = (select id from client where login = $2)) ";
 ?>

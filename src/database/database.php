@@ -140,4 +140,20 @@ function add_access($course_id, $login) {
 		or die(pg_last_error());
 	return $result;
 }
+
+function has_access($course_id, $client_id) {
+	global $dbconn, $USER_HAS_ACCESS;
+	$result = pg_query_params($dbconn, $USER_HAS_ACCESS, array($course_id, $client_id))
+		or die(pg_last_error());
+	$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
+	return $arr['exists'] == 't';
+}
+
+function has_access_by_login($course_id, $login) {
+	global $dbconn, $USER_HAS_ACCESS_BY_LOGIN;
+	$result = pg_query_params($dbconn, $USER_HAS_ACCESS_BY_LOGIN, array($course_id, $login))
+		or die(pg_last_error());
+	$arr = pg_fetch_array($result, 0, PGSQL_ASSOC);
+	return $arr['exists'] == 't';
+}
 ?>
