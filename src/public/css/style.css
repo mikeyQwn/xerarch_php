@@ -14,12 +14,12 @@ main {
 
 nav {
   width: 100vw;
-  height: 3rem;
+  height: 4rem;
   padding-left: 20vw;
   padding-right: 20vw;
   display: flex;
   align-items: center;
-  background: #aaa;
+  background: #D4D4D4;
 }
 
 nav a:last-child {
@@ -31,8 +31,14 @@ a:visited, a:hover, a:focus {
     color: #000;
 }
 
+a img {
+  background: none;
+}
+
 nav a {
   margin: 0 10px;
+  border-radius: 1rem;
+  padding: 0.5rem;
   text-decoration: none;
   background: #aaa;
   font-size: 1.2em;

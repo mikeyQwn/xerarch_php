@@ -91,5 +91,11 @@ $CREATE_TEST_QUESTION = "" .
 
 $FETCH_TEST = "" .
 "select id, question, question_type_id, array_to_json(choices) as choices, answer from test_question tq
-where tq.test_id = $1;"
+	where tq.test_id = $1;";
+
+$ADD_ACCESS = "" . 
+"insert into course_client " .
+"(course_id, client_id) " .
+"values " . 
+"($1, (select id from client where login = $2))";
 ?>

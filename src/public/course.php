@@ -15,7 +15,7 @@ if (!isset($course_id)) {
 $contents = render_template($COURSE_TEMPLATE, [
   'lessons' => fetch_lessons($course_id, $user_info['id']),
   'tests' => fetch_tests($course_id, $user_info['id']),
-  'can_add' => can_add_lesson($course_id, $user_info['id']),
+  'can_add' => can_add_lesson($user_info['role_id']),
   'course_id' => $course_id,
 ]);
 

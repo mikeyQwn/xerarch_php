@@ -23,7 +23,7 @@ foreach ($lessons as $lesson) {
     echo "</li>";
 }
 echo "</ul>";
-  if ($can_add) {
+if ($can_add) {
     global $FILE_UPLOAD_TEMPLATE;
     echo "<br/><strong>Загрузить лекцию</strong>";
     echo render_template($FILE_UPLOAD_TEMPLATE, [
@@ -34,9 +34,9 @@ echo "</ul>";
       'accept' => 'text/plain'
     ]);
   echo "<iframe id='add_lesson' name='lesson' onload='show(\"add_lesson\")'></iframe>";
-  }
+}
 
-  ?>
+?>
 
 <?php if (isset($tests) and count($tests) != 0) { ?>
 <hr/>
@@ -64,6 +64,13 @@ if ($can_add) {
     'accept' => 'application/json',
 ]);
 echo "<iframe id='add_test' name='test' onload='show(\"add_test\")'></iframe>";
+  }
+
+  if ($can_add) {
+  global $ADD_ACCESS_TEMPLATE;
+
+  echo "<hr/><br/><strong>Предоставить доступ к курсу</strong>";
+  echo render_template($ADD_ACCESS_TEMPLATE, ['course_id' => $course_id]);
 }
 ?>
 </div>

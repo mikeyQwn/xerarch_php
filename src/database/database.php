@@ -133,4 +133,11 @@ function fetch_test($test_id) {
 	$arr = pg_fetch_all($result, PGSQL_ASSOC);
 	return ['questions' => $arr, 'id' => $test_id];
 }
+
+function add_access($course_id, $login) {
+	global $dbconn, $ADD_ACCESS;
+	$result = pg_query_params($dbconn, $ADD_ACCESS, array($course_id, $login))
+		or die(pg_last_error());
+	return $result;
+}
 ?>

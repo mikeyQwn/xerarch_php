@@ -8,10 +8,14 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
   <head>
     <title><?php echo $title ?></title>
     <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
   </head>
   <body>
     <header>
       <nav>
+        <a href="/">
+            <img src="/static/logo.svg" />
+        </a>
         <?php
           global $ANCHOR_TEMPLATE;
         foreach ($navigation as &$nav_button) {

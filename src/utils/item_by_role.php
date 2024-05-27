@@ -27,7 +27,7 @@ function get_role_name($role_id) {
 	return $ID_TO_ROLE_NAME[$role_id];
 }
 
-function can_add_lesson($user_id) {
-	return $user_id == 1;
+function can_add_lesson($role_id) {
+	return $role_id == 1;
 }
 ?>

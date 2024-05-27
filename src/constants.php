@@ -16,14 +16,15 @@ $PROFESSOR_NAVIGATION = [
 
 $STUDENT_NAVIGATION = [
 	["href" => "/", "text" => "Домой"],
+	["href" => "/courses.php", "text" => "Ваши курсы"],
 	["href" => "/api/logout.php", "text" => "Выйти"],
 ];
 
 $MODERATOR_NAVIGATION = [
-	["href" => "/", "text" => "Домой"],
+    ["href" => "/", "text" => "Домой"],
     ["href" => "/moderator/delete_user.php", "text" => "Удалить пользователей"],
     ["href" => "/moderator/register_user.php", "text" => "Зарегистрировать пользователя"],
-	["href" => "/api/logout.php", "text" => "Выйти"],
+    ["href" => "/api/logout.php", "text" => "Выйти"],
 ];
 
 //templates 
@@ -43,4 +44,5 @@ $DELETE_USERS_TEMPLATE = $TEMPLATE_DIR . "delete_users.php";
 $SHOW_TEMPLATE = $TEMPLATE_DIR . "show.php";
 $TEST_TEMPLATE = $TEMPLATE_DIR . "test.php";
 $QUESTION_TEMPLATE = $TEMPLATE_DIR . "question.php";
+$ADD_ACCESS_TEMPLATE = $TEMPLATE_DIR . "add_access.php";
 ?>
