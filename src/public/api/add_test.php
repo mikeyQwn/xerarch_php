@@ -19,7 +19,6 @@ foreach ($contents_decoded as $question) {
 	'{'. implode(', ', $question['choices']) . '}' : null;
 	$answer = $question['answer'];
 	$q = $question['question'];
-	print_r($q);
 	array_push($questions, array(
 		"question" => $q,
 		"question_type_id" => $question_type_id,
@@ -35,5 +34,5 @@ $test = array(
 );
 add_test($test) or die("Не удалось добавить тест");
 
-echo "Лекция добавлена!";
+echo "Тест загружен!";
 ?>

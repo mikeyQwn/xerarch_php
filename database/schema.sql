@@ -4,13 +4,6 @@ create table client_role (
 	PRIMARY KEY(id)
 );
 
-insert into client_role
-(id, name)
-values
-(1, 'professor'),
-(2, 'student'),
-(3, 'moderator');
-
 
 create table client (
 	id serial not null,
@@ -23,16 +16,9 @@ create table client (
 	PRIMARY KEY(id)
 );
 
-insert into client
-(full_name, login, password, salt, role_id)
-values
-('Mikhail The Moderator', 'mikeyadmin', '$2y$10$3.JYgEyCYpcyRGxaKQBE5uqps7eK3/y7XIfZqb9cJX/RWEYM3ZGWy', '355994521b84b4fc39513963e7c94174', 3),  -- admin
-('Some User The Professor', 'someprof', '$2y$10$YmVql5TG15VkT4ucS0IT7eFWin3G7pADOWB3hwtjEFLr2Z9P.1KMK', 'aed6ed342d16d619d78be9c3d4d47e9c', 1), -- notadmin
-('Who is this The Student', 'student', '$2y$10$Ah7zVDWpOSTnbX.M9YuhieLqk9g03Dfm9XBIbqtEgP5ZRIZ5O/2iO', '512267a47bb4ee0a73805baad74d6748', 2); -- student
-
 create table cookie (
 	id uuid unique not null default gen_random_uuid(),
-	user_id int not null,
+	user_id int not null references client(id),
 	created_at timestamp not null default now(),
 	disabled bool not null,
 	PRIMARY KEY(id)
@@ -90,6 +76,21 @@ create table test_question(
 	answer varchar not null,
 	PRIMARY KEY(id)
 );
+
+insert into client_role
+(id, name)
+values
+(1, 'professor'),
+(2, 'student'),
+(3, 'moderator');
+
+insert into client
+(full_name, login, password, salt, role_id)
+values
+('Mikhail The Moderator', 'mikeyadmin', '$2y$10$3.JYgEyCYpcyRGxaKQBE5uqps7eK3/y7XIfZqb9cJX/RWEYM3ZGWy', '355994521b84b4fc39513963e7c94174', 3),  -- admin
+('Some User The Professor', 'someprof', '$2y$10$YmVql5TG15VkT4ucS0IT7eFWin3G7pADOWB3hwtjEFLr2Z9P.1KMK', 'aed6ed342d16d619d78be9c3d4d47e9c', 1), -- notadmin
+('Who is this The Student', 'student', '$2y$10$Ah7zVDWpOSTnbX.M9YuhieLqk9g03Dfm9XBIbqtEgP5ZRIZ5O/2iO', '512267a47bb4ee0a73805baad74d6748', 2); -- student
+
 
 
 insert into question_type

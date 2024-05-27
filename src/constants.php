@@ -41,4 +41,6 @@ $FILE_UPLOAD_TEMPLATE = $TEMPLATE_DIR . "upload_file.php";
 $CREATE_USER_TEMPLATE = $TEMPLATE_DIR . "create_user.php";
 $DELETE_USERS_TEMPLATE = $TEMPLATE_DIR . "delete_users.php";
 $SHOW_TEMPLATE = $TEMPLATE_DIR . "show.php";
+$TEST_TEMPLATE = $TEMPLATE_DIR . "test.php";
+$QUESTION_TEMPLATE = $TEMPLATE_DIR . "question.php";
 ?>

@@ -121,9 +121,16 @@ function add_test($test) {
 	$questions = $test["questions"];
 	$test_id = create_test($test);
 	foreach ($questions as $question) {
-		print_r($question);
 		create_test_question($test_id, $question);
 	}
-	return false;
+	return true;
+}
+
+function fetch_test($test_id) {
+	global $dbconn, $FETCH_TEST;
+	$result = pg_query_params($dbconn, $FETCH_TEST, array($test_id))
+		or die(pg_last_error());
+	$arr = pg_fetch_all($result, PGSQL_ASSOC);
+	return ['questions' => $arr, 'id' => $test_id];
 }
 ?>

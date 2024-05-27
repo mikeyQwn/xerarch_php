@@ -49,18 +49,21 @@ echo "</ul>";
     ]);
     echo "<br>";
   }
-  if ($can_add) {
-    global $FILE_UPLOAD_TEMPLATE;
-    echo "<br/><strong>Загрузить тест</strong>";
-    echo render_template($FILE_UPLOAD_TEMPLATE, [
-      'label' => 'Название теста',
-      'action' => '/api/add_test.php',
-      'target' => 'test',
-      'course_id' => $course_id,
-      'accept' => 'application/json',
-  ]);
-  echo "<iframe id='add_test' name='test' onload='show(\"add_test\")'></iframe>";
-  }
   ?>
   <?php } ?>
+
+<?php
+if ($can_add) {
+  global $FILE_UPLOAD_TEMPLATE;
+  echo "<br/><strong>Загрузить тест</strong>";
+  echo render_template($FILE_UPLOAD_TEMPLATE, [
+    'label' => 'Название теста',
+    'action' => '/api/add_test.php',
+    'target' => 'test',
+    'course_id' => $course_id,
+    'accept' => 'application/json',
+]);
+echo "<iframe id='add_test' name='test' onload='show(\"add_test\")'></iframe>";
+}
+?>
 </div>

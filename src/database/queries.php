@@ -88,4 +88,8 @@ $CREATE_TEST_QUESTION = "" .
 	"values ".
 	"($1, $2, $3, $4, $5) ".
 	"returning id ";
+
+$FETCH_TEST = "" .
+"select id, question, question_type_id, array_to_json(choices) as choices, answer from test_question tq
+where tq.test_id = $1;"
 ?>
