@@ -6,7 +6,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../utils/render_template.php';
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
 include_once $_SERVER["DOCUMENT_ROOT"] .'/../utils/item_by_role.php';
 
-$user_info = auth_middleware(array(1, 2));
+$user_info = auth_middleware([1, 2]);
+
 $course_id = $_GET["id"];
 if (!isset($course_id)) {
   die("Не указан идентификатор курса");
