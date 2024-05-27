@@ -10,6 +10,6 @@
     name="password"
     required
   /><br /><br />
-  <button type="submit">Login</button>
+  <button type="submit">Войти</button>
   </form>
 </div>

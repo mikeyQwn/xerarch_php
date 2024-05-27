@@ -7,11 +7,15 @@ include_once $_SERVER["DOCUMENT_ROOT"] .'/../constants.php';
 
 $auth_cookie = $_COOKIE[$AUTH_COOKIE];
 if (!isset($auth_cookie)) {
-	header("Location: login.php");
-	exit();
+      header("Location: login.php");
+      exit();
 }
 
 $user_info = get_user_info($auth_cookie);
+if (!$user_info) {
+      header("Location: login.php");
+      exit();
+}
 $contents = render_template($GREETING_TEMPLATE, $user_info);
 
 echo render_template($LAYOUT_TEMPLATE, [
